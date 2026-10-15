@@ -47,6 +47,26 @@ does; `brand` explains whose product it is.
 4. If there is no match and no user-provided URL, omit `brand`. Do not invent a
    URL or silently assign a visually similar company.
 
+## Absent by design
+
+A well-known provider can be missing from the catalogue on purpose. Built-in
+marks are compact symbols that fill their own viewBox, because the badge draws
+them in a 10px box on a neutral white plate. A wordmark, a logo that carries its
+own background plate, or a per-service SKU does not survive that geometry, so it
+is not added.
+
+Amazon Web Services and Microsoft Azure are absent for this reason. Capture the
+provider site instead; a captured icon is centered and fitted rather than scaled
+from a viewBox:
+
+```bash
+node bin/archify.mjs brands capture "https://aws.amazon.com" --json
+```
+
+Keep `brand` at provider or distinctly branded product granularity. The
+catalogue has `google-cloud`, not `bigquery`. Let `label` carry the service name
+and `type` carry the semantics.
+
 Known-brand URLs resolve to the bundled vector instead of using the network.
 For discovered icon `href` attributes, capture decodes the basic named references
 `amp`, `quot`, `apos`, `lt`, `gt` (and their defined uppercase aliases), plus

@@ -5,6 +5,13 @@ workflow, sequence, data-flow, and lifecycle nodes. The mark is optional authore
 identity: it never replaces the node's semantic `type`, color, label, or
 relationships.
 
+A candidate qualifies when it is a compact symbol that fills its own viewBox and
+stays legible in the badge's 10px box on a white plate, and when it names a
+provider or a distinctly branded product rather than a per-service SKU.
+Wordmarks and logos with a baked-in background plate do not qualify; author those
+through `brands capture` instead. The catalogue stays bounded on purpose, so an
+absent provider is not automatically a gap to fill.
+
 Unknown sites are handled by an explicit two-stage workflow. Run
 `node bin/archify.mjs brands capture <url> --json`, then author the returned
 digest-pinned `brand` value. Normal render and validate commands do not perform
